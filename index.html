@@ -167,12 +167,17 @@
             gap: 0.5rem;
         }
         
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        
         .btn-primary {
             background-color: #3b82f6;
             color: white;
         }
         
-        .btn-primary:hover {
+        .btn-primary:hover:not(:disabled) {
             background-color: #2563eb;
         }
         
@@ -259,8 +264,28 @@
             background-color: #eff6ff;
         }
         
-        .text-blue-800 {
-            color: #1e40af;
+        .bg-yellow-50 {
+            background-color: #fefce8;
+        }
+        
+        .bg-red-50 {
+            background-color: #fef2f2;
+        }
+        
+        .bg-green-50 {
+            background-color: #f0fdf4;
+        }
+        
+        .text-yellow-800 {
+            color: #92400e;
+        }
+        
+        .text-red-800 {
+            color: #991b1b;
+        }
+        
+        .text-green-800 {
+            color: #166534;
         }
         
         .bg-gray-50 {
@@ -273,11 +298,32 @@
         
         .message-box {
             margin-top: 1rem;
-            padding: 0.75rem;
-            background-color: #eff6ff;
-            color: #1e40af;
+            padding: 0.75rem 1rem;
             border-radius: 0.5rem;
             font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .message-info {
+            background-color: #eff6ff;
+            color: #1e40af;
+        }
+        
+        .message-success {
+            background-color: #f0fdf4;
+            color: #166534;
+        }
+        
+        .message-warning {
+            background-color: #fefce8;
+            color: #92400e;
+        }
+        
+        .message-error {
+            background-color: #fef2f2;
+            color: #991b1b;
         }
         
         .icon {
@@ -340,6 +386,26 @@
             margin-top: 0.25rem;
         }
         
+        .loading-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .spinner {
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid #e5e7eb;
+            border-top: 2px solid #3b82f6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         @media (max-width: 768px) {
             .grid-cols-2 {
                 grid-template-columns: 1fr;
@@ -376,9 +442,10 @@
                                 id="colorInput"
                                 placeholder="blue, Pantone 286, #FF5733, darker, warmer..."
                                 class="input"
+                                onkeypress="handleKeyPress(event)"
                             />
                         </div>
-                        <button onclick="applyCommand()" class="btn btn-primary">
+                        <button onclick="applyCommand()" class="btn btn-primary" id="applyBtn">
                             Apply
                         </button>
                     </div>
@@ -409,7 +476,12 @@
                     </div>
                 </div>
                 
-                <div id="messageBox" class="message-box hidden"></div>
+                <div id="messageBox" class="message-box message-info hidden">
+                    <div class="loading-indicator">
+                        <div class="spinner"></div>
+                        Loading color databases...
+                    </div>
+                </div>
 
                 <div class="flex justify-between items-center mt-4">
                     <button onclick="resetColor()" class="btn btn-secondary">
@@ -476,9 +548,9 @@
                                 style="background-color: rgb(0, 85, 184);"
                             ></div>
                             <div>
-                                <div id="pantoneName" class="font-medium text-gray-900">Pantone 286 C</div>
-                                <div id="pantoneRgb" class="text-sm text-gray-600">RGB: 0, 85, 184</div>
-                                <div id="pantoneDistance" class="distance-info">Distance: 0</div>
+                                <div id="pantoneName" class="font-medium text-gray-900">Loading...</div>
+                                <div id="pantoneRgb" class="text-sm text-gray-600">-</div>
+                                <div id="pantoneDistance" class="distance-info">-</div>
                                 <button onclick="copyToClipboard('pantone')" class="link-btn">
                                     <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
@@ -504,9 +576,9 @@
                                 style="background-color: rgb(0, 0, 255);"
                             ></div>
                             <div>
-                                <div id="dmcName" class="font-medium text-gray-900">DMC 825 - Dark Blue</div>
-                                <div id="dmcDetails" class="text-sm text-gray-600">Code: 825 | RGB: 53, 87, 160</div>
-                                <div id="dmcDistance" class="distance-info">Distance: 0</div>
+                                <div id="dmcName" class="font-medium text-gray-900">Loading...</div>
+                                <div id="dmcDetails" class="text-sm text-gray-600">-</div>
+                                <div id="dmcDistance" class="distance-info">-</div>
                                 <button onclick="copyToClipboard('dmc')" class="link-btn">
                                     <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
@@ -533,12 +605,12 @@
                     </div>
 
                     <div class="card">
-                        <h3 class="font-semibold text-gray-900 mb-4">Database Info</h3>
+                        <h3 class="font-semibold text-gray-900 mb-4">Database Status</h3>
                         <div class="space-y-2 text-sm text-gray-600">
-                            <div><strong>Pantone C Colors:</strong> 400+ colors</div>
-                            <div><strong>DMC Thread Colors:</strong> 450+ colors</div>
-                            <div><strong>Matching:</strong> RGB distance algorithm</div>
-                            <div><strong>Accuracy:</strong> Professional color matching</div>
+                            <div><strong>Pantone Colors:</strong> <span id="pantoneCount">Loading...</span></div>
+                            <div><strong>DMC Thread Colors:</strong> <span id="dmcCount">Loading...</span></div>
+                            <div><strong>Status:</strong> <span id="dbStatus">Initializing...</span></div>
+                            <div><strong>Last Updated:</strong> <span id="lastUpdated">-</span></div>
                         </div>
                     </div>
                 </div>
@@ -547,11 +619,128 @@
     </div>
 
     <script>
-        // Color databases and state
+        // Color database loader and state management
+        class ColorDatabase {
+            constructor() {
+                this.pantoneColors = [];
+                this.dmcColors = [];
+                this.loaded = false;
+                this.loading = false;
+                this.error = null;
+            }
+
+            async loadColorData() {
+                if (this.loaded || this.loading) return;
+                
+                this.loading = true;
+                this.updateStatus('Loading color databases...');
+                
+                try {
+                    // Load both datasets in parallel
+                    const [pantoneResponse, dmcResponse] = await Promise.all([
+                        fetch('./data/pantone-colors.json'),
+                        fetch('./data/dmc-colors.json')
+                    ]);
+
+                    if (!pantoneResponse.ok || !dmcResponse.ok) {
+                        throw new Error('Failed to load color data files');
+                    }
+
+                    this.pantoneColors = await pantoneResponse.json();
+                    this.dmcColors = await dmcResponse.json();
+                    
+                    this.loaded = true;
+                    this.error = null;
+                    
+                    this.updateStatus('Color databases loaded successfully!');
+                    this.updateCounts();
+                    
+                    console.log(`Loaded ${this.pantoneColors.length} Pantone colors and ${this.dmcColors.length} DMC colors`);
+                    
+                } catch (error) {
+                    console.error('Error loading color data:', error);
+                    this.error = error.message;
+                    this.loadFallbackData();
+                } finally {
+                    this.loading = false;
+                }
+            }
+
+            loadFallbackData() {
+                this.pantoneColors = [
+                    { name: 'Pantone 286 C', code: '286 C', r: 0, g: 85, b: 184, hex: '#0055b8' },
+                    { name: 'Pantone 355 C', code: '355 C', r: 0, g: 171, b: 132, hex: '#00ab84' },
+                    { name: 'Red 032 C', code: 'Red 032 C', r: 239, g: 51, b: 64, hex: '#ef3340' },
+                    { name: 'Yellow C', code: 'Yellow C', r: 254, g: 221, b: 0, hex: '#fedd00' },
+                    { name: 'Purple C', code: 'Purple C', r: 187, g: 41, b: 187, hex: '#bb29bb' }
+                ];
+                
+                this.dmcColors = [
+                    { code: '825', name: 'Dark Blue', r: 53, g: 87, b: 160, hex: '#3557a0' },
+                    { code: '817', name: 'Very Dark Coral Red', r: 189, g: 39, b: 39, hex: '#bd2727' },
+                    { code: '700', name: 'Bright Green', r: 0, g: 122, b: 51, hex: '#007a33' },
+                    { code: '972', name: 'Deep Canary', r: 255, g: 181, b: 59, hex: '#ffb53b' },
+                    { code: '550', name: 'Very Dark Violet', r: 102, g: 54, b: 102, hex: '#663666' }
+                ];
+                
+                this.loaded = true;
+                this.updateStatus('Using fallback color data');
+                this.updateCounts();
+            }
+
+            updateStatus(message) {
+                const statusEl = document.getElementById('dbStatus');
+                const messageEl = document.getElementById('messageBox');
+                
+                if (statusEl) statusEl.textContent = message;
+                
+                if (messageEl) {
+                    messageEl.innerHTML = `
+                        <div class="loading-indicator">
+                            <div class="spinner"></div>
+                            ${message}
+                        </div>
+                    `;
+                    messageEl.className = 'message-box message-info';
+                    messageEl.classList.remove('hidden');
+                    
+                    // Hide message after successful load
+                    if (message.includes('successfully')) {
+                        setTimeout(() => {
+                            messageEl.classList.add('hidden');
+                        }, 3000);
+                    }
+                }
+            }
+
+            updateCounts() {
+                const pantoneCountEl = document.getElementById('pantoneCount');
+                const dmcCountEl = document.getElementById('dmcCount');
+                const lastUpdatedEl = document.getElementById('lastUpdated');
+                
+                if (pantoneCountEl) pantoneCountEl.textContent = `${this.pantoneColors.length} colors`;
+                if (dmcCountEl) dmcCountEl.textContent = `${this.dmcColors.length} colors`;
+                if (lastUpdatedEl) lastUpdatedEl.textContent = new Date().toLocaleString();
+            }
+
+            async ensureLoaded() {
+                if (!this.loaded && !this.loading) {
+                    await this.loadColorData();
+                }
+                // Wait for loading to complete
+                while (this.loading) {
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                }
+            }
+        }
+
+        // Application state
         let currentColor = { r: 0, g: 100, b: 200 };
         let colorHistory = [];
         let showWheel = false;
+        const colorDB = new ColorDatabase();
 
+        // Base colors for natural language processing
         const baseColors = {
             red: { r: 255, g: 0, b: 0 },
             blue: { r: 0, g: 100, b: 200 },
@@ -562,6 +751,7 @@
             pink: { r: 255, g: 192, b: 203 },
             brown: { r: 139, g: 69, b: 19 },
             gray: { r: 128, g: 128, b: 128 },
+            grey: { r: 128, g: 128, b: 128 },
             black: { r: 0, g: 0, b: 0 },
             white: { r: 255, g: 255, b: 255 },
             cyan: { r: 0, g: 255, b: 255 },
@@ -574,63 +764,344 @@
             silver: { r: 192, g: 192, b: 192 }
         };
 
-        // Comprehensive Pantone C color database
-        const pantoneColors = [
-            { name: 'Yellow C', r: 254, g: 221, b: 0 },
-            { name: 'Yellow 012 C', r: 255, g: 215, b: 0 },
-            { name: 'Orange 021 C', r: 254, g: 80, b: 0 },
-            { name: 'Warm Red C', r: 249, g: 66, b: 58 },
-            { name: 'Red 032 C', r: 239, g: 51, b: 64 },
-            { name: 'Rubine Red C', r: 206, g: 0, b: 88 },
-            { name: 'Rhodamine Red C', r: 225, g: 0, b: 152 },
-            { name: 'Purple C', r: 187, g: 41, b: 187 },
-            { name: 'Violet C', r: 68, g: 0, b: 153 },
-            { name: 'Blue 072 C', r: 16, g: 6, b: 159 },
-            { name: 'Reflex Blue C', r: 0, g: 20, b: 137 },
-            { name: 'Process Blue C', r: 0, g: 133, b: 202 },
-            { name: 'Green C', r: 0, g: 171, b: 132 },
-            { name: 'Black C', r: 45, g: 41, b: 38 },
-            { name: '100 C', r: 246, g: 235, b: 97 },
-            { name: '101 C', r: 247, g: 234, b: 72 },
-            { name: '102 C', r: 252, g: 227, b: 0 },
-            { name: '103 C', r: 197, g: 169, b: 0 },
-            { name: '104 C', r: 175, g: 152, b: 0 },
-            { name: '105 C', r: 137, g: 122, b: 39 },
-            { name: '106 C', r: 249, g: 229, b: 71 },
-            { name: '107 C', r: 251, g: 225, b: 34 },
-            { name: '108 C', r: 254, g: 219, b: 0 },
-            { name: '109 C', r: 255, g: 209, b: 0 },
-            { name: '110 C', r: 218, g: 170, b: 0 },
-            { name: '111 C', r: 170, g: 138, b: 0 },
-            { name: '112 C', r: 156, g: 132, b: 18 },
-            { name: '113 C', r: 250, g: 224, b: 83 },
-            { name: '114 C', r: 251, g: 221, b: 64 },
-            { name: '115 C', r: 253, g: 218, b: 36 },
-            { name: '116 C', r: 255, g: 205, b: 0 },
-            { name: '117 C', r: 201, g: 151, b: 0 },
-            { name: '118 C', r: 172, g: 132, b: 0 },
-            { name: '119 C', r: 137, g: 115, b: 34 },
-            { name: '120 C', r: 251, g: 219, b: 101 },
-            { name: '121 C', r: 253, g: 215, b: 87 },
-            { name: '122 C', r: 254, g: 209, b: 65 },
-            { name: '123 C', r: 255, g: 199, b: 44 },
-            { name: '124 C', r: 234, g: 170, b: 0 },
-            { name: '125 C', r: 181, g: 133, b: 0 },
-            { name: '126 C', r: 154, g: 118, b: 17 },
-            { name: '127 C', r: 243, g: 221, b: 109 },
-            { name: '128 C', r: 243, g: 213, b: 78 },
-            { name: '129 C', r: 243, g: 208, b: 62 },
-            { name: '130 C', r: 242, g: 169, b: 0 },
-            { name: '131 C', r: 204, g: 138, b: 0 },
-            { name: '132 C', r: 160, g: 116, b: 0 },
-            { name: '133 C', r: 108, g: 87, b: 27 },
-            { name: '134 C', r: 253, g: 210, b: 110 },
-            { name: '135 C', r: 255, g: 198, b: 88 },
-            { name: '136 C', r: 255, g: 191, b: 63 },
-            { name: '137 C', r: 255, g: 163, b: 0 },
-            { name: '138 C', r: 222, g: 124, b: 0 },
-            { name: '139 C', r: 175, g: 109, b: 4 },
-            { name: '140 C', r: 116, g: 83, b: 28 },
-            { name: '141 C', r: 242, g: 199, b: 92 },
-            { name: '142 C', r: 241, g: 190, b: 72 },
-            { name: '143 C', r: 241, g: 180, b
+        // Utility functions
+        function rgbToHex(r, g, b) {
+            return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        }
+
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+
+        function calculateColorDistance(color1, color2) {
+            const dr = color1.r - color2.r;
+            const dg = color1.g - color2.g;
+            const db = color1.b - color2.b;
+            return Math.sqrt(dr * dr + dg * dg + db * db);
+        }
+
+        function adjustColor(color, adjustment, amount = 0.2) {
+            let { r, g, b } = color;
+            
+            switch (adjustment.toLowerCase()) {
+                case 'darker':
+                case 'shade':
+                    r = Math.max(0, Math.round(r * (1 - amount)));
+                    g = Math.max(0, Math.round(g * (1 - amount)));
+                    b = Math.max(0, Math.round(b * (1 - amount)));
+                    break;
+                case 'lighter':
+                case 'tint':
+                    r = Math.min(255, Math.round(r + (255 - r) * amount));
+                    g = Math.min(255, Math.round(g + (255 - g) * amount));
+                    b = Math.min(255, Math.round(b + (255 - b) * amount));
+                    break;
+                case 'warmer':
+                    r = Math.min(255, Math.round(r + 30 * amount));
+                    g = Math.min(255, Math.round(g + 15 * amount));
+                    b = Math.max(0, Math.round(b - 20 * amount));
+                    break;
+                case 'cooler':
+                    r = Math.max(0, Math.round(r - 20 * amount));
+                    g = Math.max(0, Math.round(g - 10 * amount));
+                    b = Math.min(255, Math.round(b + 30 * amount));
+                    break;
+                case 'more saturated':
+                    const avgMore = (r + g + b) / 3;
+                    r = Math.min(255, Math.max(0, Math.round(r + (r - avgMore) * amount)));
+                    g = Math.min(255, Math.max(0, Math.round(g + (g - avgMore) * amount)));
+                    b = Math.min(255, Math.max(0, Math.round(b + (b - avgMore) * amount)));
+                    break;
+                case 'less saturated':
+                    const avgLess = (r + g + b) / 3;
+                    r = Math.round(r + (avgLess - r) * amount);
+                    g = Math.round(g + (avgLess - g) * amount);
+                    b = Math.round(b + (avgLess - b) * amount);
+                    break;
+            }
+            
+            return { r, g, b };
+        }
+
+        // Color matching functions
+        async function findClosestPantone(targetColor) {
+            await colorDB.ensureLoaded();
+            
+            if (colorDB.pantoneColors.length === 0) {
+                return { color: { name: 'No data', r: 0, g: 0, b: 0 }, distance: 0 };
+            }
+            
+            let closestColor = colorDB.pantoneColors[0];
+            let minDistance = calculateColorDistance(targetColor, closestColor);
+            
+            for (const color of colorDB.pantoneColors) {
+                const distance = calculateColorDistance(targetColor, color);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestColor = color;
+                }
+            }
+            
+            return { color: closestColor, distance: Math.round(minDistance) };
+        }
+
+        async function findClosestDMC(targetColor) {
+            await colorDB.ensureLoaded();
+            
+            if (colorDB.dmcColors.length === 0) {
+                return { color: { code: '000', name: 'No data', r: 0, g: 0, b: 0 }, distance: 0 };
+            }
+            
+            let closestColor = colorDB.dmcColors[0];
+            let minDistance = calculateColorDistance(targetColor, closestColor);
+            
+            for (const color of colorDB.dmcColors) {
+                const distance = calculateColorDistance(targetColor, color);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestColor = color;
+                }
+            }
+            
+            return { color: closestColor, distance: Math.round(minDistance) };
+        }
+
+        // Command processing
+        async function applyCommand() {
+            const input = document.getElementById('colorInput').value.trim().toLowerCase();
+            if (!input) return;
+
+            // Add to history
+            colorHistory.push({ ...currentColor });
+
+            try {
+                let newColor = await processColorCommand(input);
+                if (newColor) {
+                    currentColor = newColor;
+                    await updateColorDisplay();
+                }
+            } catch (error) {
+                console.error('Error processing command:', error);
+                showMessage('Error processing command. Please try again.', 'error');
+            }
+        }
+
+        async function processColorCommand(input) {
+            // Check for hex color
+            if (input.startsWith('#')) {
+                const rgb = hexToRgb(input);
+                if (rgb) return rgb;
+            }
+
+            // Check for RGB values
+            const rgbMatch = input.match(/rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/);
+            if (rgbMatch) {
+                return {
+                    r: parseInt(rgbMatch[1]),
+                    g: parseInt(rgbMatch[2]),
+                    b: parseInt(rgbMatch[3])
+                };
+            }
+
+            // Check for Pantone colors
+            await colorDB.ensureLoaded();
+            
+            const pantoneMatch = input.match(/(?:pantone\s*)?(\d+)(?:\s*c)?/);
+            if (pantoneMatch) {
+                const pantoneNum = pantoneMatch[1];
+                const found = colorDB.pantoneColors.find(color => 
+                    color.name.toLowerCase().includes(pantoneNum) || 
+                    color.code.toLowerCase().includes(pantoneNum)
+                );
+                if (found) return { r: found.r, g: found.g, b: found.b };
+            }
+
+            // Check for named Pantone colors
+            const namedPantone = colorDB.pantoneColors.find(color => 
+                input.includes(color.name.toLowerCase().replace(/\s+/g, ' ')) ||
+                input.includes(color.code.toLowerCase())
+            );
+            if (namedPantone) return { r: namedPantone.r, g: namedPantone.g, b: namedPantone.b };
+
+            // Check for adjustments
+            const adjustments = ['darker', 'lighter', 'warmer', 'cooler', 'more saturated', 'less saturated', 'shade', 'tint'];
+            for (const adj of adjustments) {
+                if (input.includes(adj)) {
+                    return adjustColor(currentColor, adj);
+                }
+            }
+
+            // Check for base colors
+            for (const [colorName, colorValue] of Object.entries(baseColors)) {
+                if (input.includes(colorName)) {
+                    return { ...colorValue };
+                }
+            }
+
+            showMessage(`Color "${input}" not recognized. Try: blue, #FF5733, Pantone 286, darker, etc.`, 'warning');
+            return null;
+        }
+
+        // UI update functions
+        async function updateColorDisplay() {
+            const colorDisplay = document.getElementById('colorDisplay');
+            const rgbValue = document.getElementById('rgbValue');
+            const hexValue = document.getElementById('hexValue');
+            
+            const rgbString = `rgb(${currentColor.r}, ${currentColor.g}, ${currentColor.b})`;
+            const hexString = rgbToHex(currentColor.r, currentColor.g, currentColor.b);
+            
+            colorDisplay.style.backgroundColor = rgbString;
+            rgbValue.textContent = `${currentColor.r}, ${currentColor.g}, ${currentColor.b}`;
+            hexValue.textContent = hexString;
+            
+            // Update color wheel
+            document.getElementById('colorWheel').value = hexString;
+            
+            // Update matches
+            try {
+                const [pantoneMatch, dmcMatch] = await Promise.all([
+                    findClosestPantone(currentColor),
+                    findClosestDMC(currentColor)
+                ]);
+                
+                updatePantoneMatch(pantoneMatch);
+                updateDMCMatch(dmcMatch);
+            } catch (error) {
+                console.error('Error updating matches:', error);
+            }
+        }
+
+        function updatePantoneMatch(match) {
+            const { color, distance } = match;
+            const pantoneColor = document.getElementById('pantoneColor');
+            const pantoneName = document.getElementById('pantoneName');
+            const pantoneRgb = document.getElementById('pantoneRgb');
+            const pantoneDistance = document.getElementById('pantoneDistance');
+            
+            const rgbString = `rgb(${color.r}, ${color.g}, ${color.b})`;
+            
+            pantoneColor.style.backgroundColor = rgbString;
+            pantoneName.textContent = color.name || 'Unknown';
+            pantoneRgb.textContent = `RGB: ${color.r}, ${color.g}, ${color.b}`;
+            pantoneDistance.textContent = `Distance: ${distance}`;
+        }
+
+        function updateDMCMatch(match) {
+            const { color, distance } = match;
+            const dmcColor = document.getElementById('dmcColor');
+            const dmcName = document.getElementById('dmcName');
+            const dmcDetails = document.getElementById('dmcDetails');
+            const dmcDistance = document.getElementById('dmcDistance');
+            
+            const rgbString = `rgb(${color.r}, ${color.g}, ${color.b})`;
+            
+            dmcColor.style.backgroundColor = rgbString;
+            dmcName.textContent = `DMC ${color.code} - ${color.name}`;
+            dmcDetails.textContent = `Code: ${color.code} | RGB: ${color.r}, ${color.g}, ${color.b}`;
+            dmcDistance.textContent = `Distance: ${distance}`;
+        }
+
+        // Event handlers
+        function handleKeyPress(event) {
+            if (event.key === 'Enter') {
+                applyCommand();
+            }
+        }
+
+        function handleColorWheelChange() {
+            const hex = document.getElementById('colorWheel').value;
+            const rgb = hexToRgb(hex);
+            if (rgb) {
+                currentColor = rgb;
+                updateColorDisplay();
+            }
+        }
+
+        function toggleColorWheel() {
+            showWheel = !showWheel;
+            const container = document.getElementById('colorWheelContainer');
+            const toggleText = document.getElementById('wheelToggleText');
+            
+            if (showWheel) {
+                container.classList.add('show');
+                toggleText.textContent = 'Hide';
+            } else {
+                container.classList.remove('show');
+                toggleText.textContent = 'Show';
+            }
+        }
+
+        function resetColor() {
+            currentColor = { r: 0, g: 100, b: 200 };
+            updateColorDisplay();
+            document.getElementById('colorInput').value = '';
+            showMessage('Color reset to default blue', 'info');
+        }
+
+        function showMessage(text, type = 'info') {
+            const messageBox = document.getElementById('messageBox');
+            messageBox.innerHTML = text;
+            messageBox.className = `message-box message-${type}`;
+            messageBox.classList.remove('hidden');
+            
+            setTimeout(() => {
+                messageBox.classList.add('hidden');
+            }, 4000);
+        }
+
+        // Clipboard functions
+        async function copyToClipboard(type) {
+            let textToCopy = '';
+            
+            switch (type) {
+                case 'rgb':
+                    textToCopy = `rgb(${currentColor.r}, ${currentColor.g}, ${currentColor.b})`;
+                    break;
+                case 'hex':
+                    textToCopy = rgbToHex(currentColor.r, currentColor.g, currentColor.b);
+                    break;
+                case 'pantone':
+                    const pantoneName = document.getElementById('pantoneName').textContent;
+                    textToCopy = pantoneName;
+                    break;
+                case 'dmc':
+                    const dmcName = document.getElementById('dmcName').textContent;
+                    textToCopy = dmcName;
+                    break;
+            }
+            
+            try {
+                await navigator.clipboard.writeText(textToCopy);
+                showMessage(`Copied: ${textToCopy}`, 'success');
+            } catch (error) {
+                console.error('Failed to copy to clipboard:', error);
+                showMessage('Failed to copy to clipboard', 'error');
+            }
+        }
+
+        // Initialize application
+        async function initializeApp() {
+            try {
+                // Load color databases
+                await colorDB.loadColorData();
+                
+                // Initialize with default color
+                await updateColorDisplay();
+                
+            } catch (error) {
+                console.error('Initialization error:', error);
+                showMessage('Error initializing app. Some features may not work.', 'error');
+            }
+        }
+
+        // Start the application when page loads
+        document.addEventListener('DOMContentLoaded', initializeApp);
+    </script>
+</body>
+</html>
