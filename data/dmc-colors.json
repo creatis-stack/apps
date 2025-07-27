@@ -1,0 +1,866 @@
+[
+  {
+    "code": "150",
+    "name": "Ultra Very Dark Dusty Rose",
+    "r": 171,
+    "g": 71,
+    "b": 108,
+    "hex": "#ab476c",
+    "category": "pink"
+  },
+  {
+    "code": "151",
+    "name": "Very Light Dusty Rose",
+    "r": 240,
+    "g": 219,
+    "b": 216,
+    "hex": "#f0dbd8",
+    "category": "pink"
+  },
+  {
+    "code": "152",
+    "name": "Medium Light Shell Pink",
+    "r": 229,
+    "g": 186,
+    "b": 184,
+    "hex": "#e5bab8",
+    "category": "pink"
+  },
+  {
+    "code": "153",
+    "name": "Very Light Violet",
+    "r": 230,
+    "g": 204,
+    "b": 217,
+    "hex": "#e6ccd9",
+    "category": "violet"
+  },
+  {
+    "code": "154",
+    "name": "Very Dark Grape",
+    "r": 87,
+    "g": 35,
+    "b": 100,
+    "hex": "#572364",
+    "category": "purple"
+  },
+  {
+    "code": "155",
+    "name": "Medium Dark Blue Violet",
+    "r": 152,
+    "g": 145,
+    "b": 182,
+    "hex": "#9891b6",
+    "category": "violet"
+  },
+  {
+    "code": "156",
+    "name": "Medium Light Blue Violet",
+    "r": 167,
+    "g": 162,
+    "b": 194,
+    "hex": "#a7a2c2",
+    "category": "violet"
+  },
+  {
+    "code": "157",
+    "name": "Very Light Blue Violet",
+    "r": 187,
+    "g": 185,
+    "b": 206,
+    "hex": "#bbb9ce",
+    "category": "violet"
+  },
+  {
+    "code": "158",
+    "name": "Medium Very Dark Blue Violet",
+    "r": 77,
+    "g": 73,
+    "b": 115,
+    "hex": "#4d4973",
+    "category": "violet"
+  },
+  {
+    "code": "159",
+    "name": "Light Gray Blue",
+    "r": 199,
+    "g": 202,
+    "b": 216,
+    "hex": "#c7cad8",
+    "category": "blue"
+  },
+  {
+    "code": "160",
+    "name": "Medium Gray Blue",
+    "r": 155,
+    "g": 161,
+    "b": 185,
+    "hex": "#9ba1b9",
+    "category": "blue"
+  },
+  {
+    "code": "161",
+    "name": "Gray Blue",
+    "r": 125,
+    "g": 132,
+    "b": 160,
+    "hex": "#7d84a0",
+    "category": "blue"
+  },
+  {
+    "code": "162",
+    "name": "Ultra Very Light Blue",
+    "r": 222,
+    "g": 235,
+    "b": 247,
+    "hex": "#deebf7",
+    "category": "blue"
+  },
+  {
+    "code": "163",
+    "name": "Medium Light Blue Green",
+    "r": 83,
+    "g": 134,
+    "b": 139,
+    "hex": "#53868b",
+    "category": "blue"
+  },
+  {
+    "code": "164",
+    "name": "Light Forest Green",
+    "r": 206,
+    "g": 218,
+    "b": 140,
+    "hex": "#ceda8c",
+    "category": "green"
+  },
+  {
+    "code": "165",
+    "name": "Very Light Moss Green",
+    "r": 239,
+    "g": 244,
+    "b": 121,
+    "hex": "#eff479",
+    "category": "green"
+  },
+  {
+    "code": "166",
+    "name": "Medium Light Moss Green",
+    "r": 194,
+    "g": 186,
+    "b": 68,
+    "hex": "#c2ba44",
+    "category": "green"
+  },
+  {
+    "code": "167",
+    "name": "Very Dark Yellow Beige",
+    "r": 181,
+    "g": 134,
+    "b": 84,
+    "hex": "#b58654",
+    "category": "brown"
+  },
+  {
+    "code": "168",
+    "name": "Very Light Pewter",
+    "r": 209,
+    "g": 209,
+    "b": 209,
+    "hex": "#d1d1d1",
+    "category": "gray"
+  },
+  {
+    "code": "169",
+    "name": "Light Pewter",
+    "r": 132,
+    "g": 132,
+    "b": 132,
+    "hex": "#848484",
+    "category": "gray"
+  },
+  {
+    "code": "208",
+    "name": "Very Dark Lavender",
+    "r": 131,
+    "g": 91,
+    "b": 139,
+    "hex": "#835b8b",
+    "category": "purple"
+  },
+  {
+    "code": "209",
+    "name": "Dark Lavender",
+    "r": 163,
+    "g": 123,
+    "b": 167,
+    "hex": "#a37ba7",
+    "category": "purple"
+  },
+  {
+    "code": "210",
+    "name": "Medium Lavender",
+    "r": 195,
+    "g": 159,
+    "b": 195,
+    "hex": "#c39fc3",
+    "category": "purple"
+  },
+  {
+    "code": "211",
+    "name": "Light Lavender",
+    "r": 227,
+    "g": 203,
+    "b": 227,
+    "hex": "#e3cbe3",
+    "category": "purple"
+  },
+  {
+    "code": "221",
+    "name": "Very Dark Shell Pink",
+    "r": 138,
+    "g": 99,
+    "b": 128,
+    "hex": "#8a6380",
+    "category": "pink"
+  },
+  {
+    "code": "310",
+    "name": "Black",
+    "r": 0,
+    "g": 0,
+    "b": 0,
+    "hex": "#000000",
+    "category": "black"
+  },
+  {
+    "code": "311",
+    "name": "Medium Navy Blue",
+    "r": 50,
+    "g": 81,
+    "b": 128,
+    "hex": "#325180",
+    "category": "blue"
+  },
+  {
+    "code": "312",
+    "name": "Very Dark Baby Blue",
+    "r": 83,
+    "g": 106,
+    "b": 146,
+    "hex": "#536a92",
+    "category": "blue"
+  },
+  {
+    "code": "317",
+    "name": "Pewter Gray",
+    "r": 108,
+    "g": 108,
+    "b": 108,
+    "hex": "#6c6c6c",
+    "category": "gray"
+  },
+  {
+    "code": "318",
+    "name": "Light Steel Gray",
+    "r": 171,
+    "g": 171,
+    "b": 171,
+    "hex": "#ababab",
+    "category": "gray"
+  },
+  {
+    "code": "319",
+    "name": "Very Dark Pistachio Green",
+    "r": 32,
+    "g": 95,
+    "b": 46,
+    "hex": "#205f2e",
+    "category": "green"
+  },
+  {
+    "code": "320",
+    "name": "Medium Pistachio Green",
+    "r": 105,
+    "g": 136,
+    "b": 90,
+    "hex": "#69885a",
+    "category": "green"
+  },
+  {
+    "code": "321",
+    "name": "Red",
+    "r": 200,
+    "g": 16,
+    "b": 46,
+    "hex": "#c8102e",
+    "category": "red"
+  },
+  {
+    "code": "322",
+    "name": "Dark Baby Blue",
+    "r": 90,
+    "g": 143,
+    "b": 184,
+    "hex": "#5a8fb8",
+    "category": "blue"
+  },
+  {
+    "code": "333",
+    "name": "Very Dark Blue Violet",
+    "r": 92,
+    "g": 84,
+    "b": 125,
+    "hex": "#5c547d",
+    "category": "violet"
+  },
+  {
+    "code": "334",
+    "name": "Medium Baby Blue",
+    "r": 137,
+    "g": 176,
+    "b": 204,
+    "hex": "#89b0cc",
+    "category": "blue"
+  },
+  {
+    "code": "335",
+    "name": "Rose",
+    "r": 238,
+    "g": 84,
+    "b": 119,
+    "hex": "#ee5477",
+    "category": "pink"
+  },
+  {
+    "code": "336",
+    "name": "Navy Blue",
+    "r": 37,
+    "g": 73,
+    "b": 126,
+    "hex": "#25497e",
+    "category": "blue"
+  },
+  {
+    "code": "340",
+    "name": "Medium Blue Violet",
+    "r": 173,
+    "g": 167,
+    "b": 199,
+    "hex": "#ada7c7",
+    "category": "violet"
+  },
+  {
+    "code": "341",
+    "name": "Light Blue Violet",
+    "r": 199,
+    "g": 195,
+    "b": 216,
+    "hex": "#c7c3d8",
+    "category": "violet"
+  },
+  {
+    "code": "347",
+    "name": "Very Dark Salmon",
+    "r": 191,
+    "g": 38,
+    "b": 47,
+    "hex": "#bf262f",
+    "category": "red"
+  },
+  {
+    "code": "349",
+    "name": "Dark Coral",
+    "r": 210,
+    "g": 15,
+    "b": 57,
+    "hex": "#d20f39",
+    "category": "red"
+  },
+  {
+    "code": "350",
+    "name": "Medium Coral",
+    "r": 227,
+    "g": 109,
+    "b": 118,
+    "hex": "#e36d76",
+    "category": "red"
+  },
+  {
+    "code": "351",
+    "name": "Light Coral",
+    "r": 233,
+    "g": 150,
+    "b": 148,
+    "hex": "#e99694",
+    "category": "red"
+  },
+  {
+    "code": "352",
+    "name": "Light Coral",
+    "r": 253,
+    "g": 151,
+    "b": 140,
+    "hex": "#fd978c",
+    "category": "coral"
+  },
+  {
+    "code": "353",
+    "name": "Peach",
+    "r": 254,
+    "g": 206,
+    "b": 177,
+    "hex": "#feceb1",
+    "category": "peach"
+  },
+  {
+    "code": "400",
+    "name": "Dark Mahogany",
+    "r": 144,
+    "g": 70,
+    "b": 54,
+    "hex": "#904636",
+    "category": "brown"
+  },
+  {
+    "code": "414",
+    "name": "Dark Steel Gray",
+    "r": 132,
+    "g": 132,
+    "b": 132,
+    "hex": "#848484",
+    "category": "gray"
+  },
+  {
+    "code": "415",
+    "name": "Pearl Gray",
+    "r": 211,
+    "g": 211,
+    "b": 214,
+    "hex": "#d3d3d6",
+    "category": "gray"
+  },
+  {
+    "code": "434",
+    "name": "Light Brown",
+    "r": 152,
+    "g": 109,
+    "b": 52,
+    "hex": "#986d34",
+    "category": "brown"
+  },
+  {
+    "code": "435",
+    "name": "Very Light Brown",
+    "r": 181,
+    "g": 134,
+    "b": 84,
+    "hex": "#b58654",
+    "category": "brown"
+  },
+  {
+    "code": "436",
+    "name": "Tan",
+    "r": 203,
+    "g": 144,
+    "b": 81,
+    "hex": "#cb9051",
+    "category": "brown"
+  },
+  {
+    "code": "437",
+    "name": "Light Tan",
+    "r": 228,
+    "g": 187,
+    "b": 142,
+    "hex": "#e4bb8e",
+    "category": "tan"
+  },
+  {
+    "code": "444",
+    "name": "Dark Lemon",
+    "r": 255,
+    "g": 206,
+    "b": 84,
+    "hex": "#ffce54",
+    "category": "yellow"
+  },
+  {
+    "code": "445",
+    "name": "Light Lemon",
+    "r": 255,
+    "g": 235,
+    "b": 132,
+    "hex": "#ffeb84",
+    "category": "yellow"
+  },
+  {
+    "code": "666",
+    "name": "Bright Red",
+    "r": 237,
+    "g": 41,
+    "b": 57,
+    "hex": "#ed2939",
+    "category": "red"
+  },
+  {
+    "code": "700",
+    "name": "Bright Green",
+    "r": 0,
+    "g": 122,
+    "b": 51,
+    "hex": "#007a33",
+    "category": "green"
+  },
+  {
+    "code": "701",
+    "name": "Light Green",
+    "r": 79,
+    "g": 142,
+    "b": 72,
+    "hex": "#4f8e48",
+    "category": "green"
+  },
+  {
+    "code": "702",
+    "name": "Kelly Green",
+    "r": 96,
+    "g": 173,
+    "b": 94,
+    "hex": "#60ad5e",
+    "category": "green"
+  },
+  {
+    "code": "703",
+    "name": "Chartreuse",
+    "r": 123,
+    "g": 182,
+    "b": 97,
+    "hex": "#7bb661",
+    "category": "green"
+  },
+  {
+    "code": "704",
+    "name": "Bright Chartreuse",
+    "r": 152,
+    "g": 203,
+    "b": 90,
+    "hex": "#98cb5a",
+    "category": "green"
+  },
+  {
+    "code": "817",
+    "name": "Very Dark Coral Red",
+    "r": 189,
+    "g": 39,
+    "b": 39,
+    "hex": "#bd2727",
+    "category": "red"
+  },
+  {
+    "code": "818",
+    "name": "Baby Pink",
+    "r": 255,
+    "g": 218,
+    "b": 224,
+    "hex": "#ffdae0",
+    "category": "pink"
+  },
+  {
+    "code": "819",
+    "name": "Light Baby Pink",
+    "r": 247,
+    "g": 238,
+    "b": 238,
+    "hex": "#f7eeee",
+    "category": "pink"
+  },
+  {
+    "code": "820",
+    "name": "Very Dark Royal Blue",
+    "r": 20,
+    "g": 48,
+    "b": 114,
+    "hex": "#143072",
+    "category": "blue"
+  },
+  {
+    "code": "822",
+    "name": "Light Beige Gray",
+    "r": 231,
+    "g": 231,
+    "b": 214,
+    "hex": "#e7e7d6",
+    "category": "beige"
+  },
+  {
+    "code": "823",
+    "name": "Dark Navy Blue",
+    "r": 0,
+    "g": 32,
+    "b": 91,
+    "hex": "#00205b",
+    "category": "blue"
+  },
+  {
+    "code": "824",
+    "name": "Very Dark Blue",
+    "r": 59,
+    "g": 78,
+    "b": 127,
+    "hex": "#3b4e7f",
+    "category": "blue"
+  },
+  {
+    "code": "825",
+    "name": "Dark Blue",
+    "r": 53,
+    "g": 87,
+    "b": 160,
+    "hex": "#3557a0",
+    "category": "blue"
+  },
+  {
+    "code": "826",
+    "name": "Medium Blue",
+    "r": 115,
+    "g": 147,
+    "b": 179,
+    "hex": "#7393b3",
+    "category": "blue"
+  },
+  {
+    "code": "827",
+    "name": "Very Light Blue",
+    "r": 181,
+    "g": 206,
+    "b": 221,
+    "hex": "#b5cedd",
+    "category": "blue"
+  },
+  {
+    "code": "828",
+    "name": "Ultra Very Light Blue",
+    "r": 237,
+    "g": 247,
+    "b": 238,
+    "hex": "#edf7ee",
+    "category": "blue"
+  },
+  {
+    "code": "829",
+    "name": "Very Dark Golden Brown",
+    "r": 130,
+    "g": 90,
+    "b": 44,
+    "hex": "#825a2c",
+    "category": "brown"
+  },
+  {
+    "code": "830",
+    "name": "Dark Golden Brown",
+    "r": 175,
+    "g": 142,
+    "b": 74,
+    "hex": "#af8e4a",
+    "category": "brown"
+  },
+  {
+    "code": "831",
+    "name": "Medium Golden Brown",
+    "r": 203,
+    "g": 161,
+    "b": 94,
+    "hex": "#cba15e",
+    "category": "brown"
+  },
+  {
+    "code": "832",
+    "name": "Golden Brown",
+    "r": 204,
+    "g": 119,
+    "b": 66,
+    "hex": "#cc7742",
+    "category": "brown"
+  },
+  {
+    "code": "833",
+    "name": "Light Golden Brown",
+    "r": 219,
+    "g": 180,
+    "b": 140,
+    "hex": "#dbb48c",
+    "category": "brown"
+  },
+  {
+    "code": "834",
+    "name": "Very Light Golden Brown",
+    "r": 221,
+    "g": 187,
+    "b": 128,
+    "hex": "#ddbb80",
+    "category": "brown"
+  },
+  {
+    "code": "898",
+    "name": "Very Dark Coffee Brown",
+    "r": 73,
+    "g": 45,
+    "b": 21,
+    "hex": "#492d15",
+    "category": "brown"
+  },
+  {
+    "code": "899",
+    "name": "Medium Rose",
+    "r": 230,
+    "g": 143,
+    "b": 174,
+    "hex": "#e68fae",
+    "category": "pink"
+  },
+  {
+    "code": "900",
+    "name": "Dark Burnt Orange",
+    "r": 209,
+    "g": 79,
+    "b": 25,
+    "hex": "#d14f19",
+    "category": "orange"
+  },
+  {
+    "code": "972",
+    "name": "Deep Canary",
+    "r": 255,
+    "g": 181,
+    "b": 59,
+    "hex": "#ffb53b",
+    "category": "yellow"
+  },
+  {
+    "code": "973",
+    "name": "Bright Canary",
+    "r": 255,
+    "g": 227,
+    "b": 0,
+    "hex": "#ffe300",
+    "category": "yellow"
+  },
+  {
+    "code": "996",
+    "name": "Medium Electric Blue",
+    "r": 0,
+    "g": 204,
+    "b": 255,
+    "hex": "#00ccff",
+    "category": "blue"
+  },
+  {
+    "code": "3705",
+    "name": "Dark Melon",
+    "r": 255,
+    "g": 124,
+    "b": 138,
+    "hex": "#ff7c8a",
+    "category": "coral"
+  },
+  {
+    "code": "3706",
+    "name": "Medium Melon",
+    "r": 255,
+    "g": 173,
+    "b": 164,
+    "hex": "#ffada4",
+    "category": "coral"
+  },
+  {
+    "code": "3708",
+    "name": "Light Melon",
+    "r": 254,
+    "g": 211,
+    "b": 196,
+    "hex": "#fed3c4",
+    "category": "coral"
+  },
+  {
+    "code": "3709",
+    "name": "Very Light Melon",
+    "r": 255,
+    "g": 226,
+    "b": 207,
+    "hex": "#ffe2cf",
+    "category": "coral"
+  },
+  {
+    "code": "3746",
+    "name": "Dark Blue Violet",
+    "r": 119,
+    "g": 107,
+    "b": 153,
+    "hex": "#776b99",
+    "category": "violet"
+  },
+  {
+    "code": "3747",
+    "name": "Very Light Blue Violet",
+    "r": 230,
+    "g": 230,
+    "b": 250,
+    "hex": "#e6e6fa",
+    "category": "violet"
+  },
+  {
+    "code": "3750",
+    "name": "Very Dark Antique Blue",
+    "r": 53,
+    "g": 94,
+    "b": 137,
+    "hex": "#355e89",
+    "category": "blue"
+  },
+  {
+    "code": "3755",
+    "name": "Baby Blue",
+    "r": 121,
+    "g": 166,
+    "b": 210,
+    "hex": "#79a6d2",
+    "category": "blue"
+  },
+  {
+    "code": "3756",
+    "name": "Ultra Very Light Baby Blue",
+    "r": 251,
+    "g": 252,
+    "b": 255,
+    "hex": "#fbfcff",
+    "category": "blue"
+  },
+  {
+    "code": "3761",
+    "name": "Light Sky Blue",
+    "r": 163,
+    "g": 209,
+    "b": 234,
+    "hex": "#a3d1ea",
+    "category": "blue"
+  },
+  {
+    "code": "3765",
+    "name": "Very Dark Peacock Blue",
+    "r": 62,
+    "g": 125,
+    "b": 133,
+    "hex": "#3e7d85",
+    "category": "blue"
+  },
+  {
+    "code": "3766",
+    "name": "Light Peacock Blue",
+    "r": 24,
+    "g": 181,
+    "b": 200,
+    "hex": "#18b5c8",
+    "category": "blue"
+  }
+]
