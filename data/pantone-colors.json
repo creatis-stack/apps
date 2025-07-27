@@ -1,0 +1,281 @@
+[
+  {
+    "name": "Yellow C",
+    "code": "Yellow C",
+    "r": 254,
+    "g": 221,
+    "b": 0,
+    "hex": "#fedd00",
+    "category": "yellow"
+  },
+  {
+    "name": "Yellow 012 C",
+    "code": "012 C",
+    "r": 255,
+    "g": 215,
+    "b": 0,
+    "hex": "#ffd700",
+    "category": "yellow"
+  },
+  {
+    "name": "Orange 021 C",
+    "code": "021 C",
+    "r": 254,
+    "g": 80,
+    "b": 0,
+    "hex": "#fe5000",
+    "category": "orange"
+  },
+  {
+    "name": "Warm Red C",
+    "code": "Warm Red C",
+    "r": 249,
+    "g": 66,
+    "b": 58,
+    "hex": "#f9423a",
+    "category": "red"
+  },
+  {
+    "name": "Red 032 C",
+    "code": "032 C",
+    "r": 239,
+    "g": 51,
+    "b": 64,
+    "hex": "#ef3340",
+    "category": "red"
+  },
+  {
+    "name": "Rubine Red C",
+    "code": "Rubine Red C",
+    "r": 206,
+    "g": 0,
+    "b": 88,
+    "hex": "#ce0058",
+    "category": "red"
+  },
+  {
+    "name": "Rhodamine Red C",
+    "code": "Rhodamine Red C",
+    "r": 225,
+    "g": 0,
+    "b": 152,
+    "hex": "#e10098",
+    "category": "magenta"
+  },
+  {
+    "name": "Purple C",
+    "code": "Purple C",
+    "r": 187,
+    "g": 41,
+    "b": 187,
+    "hex": "#bb29bb",
+    "category": "purple"
+  },
+  {
+    "name": "Violet C",
+    "code": "Violet C",
+    "r": 68,
+    "g": 0,
+    "b": 153,
+    "hex": "#440099",
+    "category": "violet"
+  },
+  {
+    "name": "Blue 072 C",
+    "code": "072 C",
+    "r": 16,
+    "g": 6,
+    "b": 159,
+    "hex": "#10069f",
+    "category": "blue"
+  },
+  {
+    "name": "Reflex Blue C",
+    "code": "Reflex Blue C",
+    "r": 0,
+    "g": 20,
+    "b": 137,
+    "hex": "#001489",
+    "category": "blue"
+  },
+  {
+    "name": "Process Blue C",
+    "code": "Process Blue C",
+    "r": 0,
+    "g": 133,
+    "b": 202,
+    "hex": "#0085ca",
+    "category": "blue"
+  },
+  {
+    "name": "Pantone 286 C",
+    "code": "286 C",
+    "r": 0,
+    "g": 85,
+    "b": 184,
+    "hex": "#0055b8",
+    "category": "blue"
+  },
+  {
+    "name": "Green C",
+    "code": "Green C",
+    "r": 0,
+    "g": 171,
+    "b": 132,
+    "hex": "#00ab84",
+    "category": "green"
+  },
+  {
+    "name": "Pantone 355 C",
+    "code": "355 C",
+    "r": 0,
+    "g": 171,
+    "b": 132,
+    "hex": "#00ab84",
+    "category": "green"
+  },
+  {
+    "name": "Black C",
+    "code": "Black C",
+    "r": 45,
+    "g": 41,
+    "b": 38,
+    "hex": "#2d2926",
+    "category": "black"
+  },
+  {
+    "name": "Cool Gray 1 C",
+    "code": "Cool Gray 1 C",
+    "r": 221,
+    "g": 221,
+    "b": 216,
+    "hex": "#ddddd8",
+    "category": "gray"
+  },
+  {
+    "name": "Cool Gray 5 C",
+    "code": "Cool Gray 5 C",
+    "r": 182,
+    "g": 182,
+    "b": 174,
+    "hex": "#b6b6ae",
+    "category": "gray"
+  },
+  {
+    "name": "Cool Gray 9 C",
+    "code": "Cool Gray 9 C",
+    "r": 117,
+    "g": 120,
+    "b": 123,
+    "hex": "#75787b",
+    "category": "gray"
+  },
+  {
+    "name": "Pantone 100 C",
+    "code": "100 C",
+    "r": 246,
+    "g": 235,
+    "b": 97,
+    "hex": "#f6eb61",
+    "category": "yellow"
+  },
+  {
+    "name": "Pantone 101 C",
+    "code": "101 C",
+    "r": 247,
+    "g": 234,
+    "b": 72,
+    "hex": "#f7ea48",
+    "category": "yellow"
+  },
+  {
+    "name": "Pantone 102 C",
+    "code": "102 C",
+    "r": 252,
+    "g": 227,
+    "b": 0,
+    "hex": "#fce300",
+    "category": "yellow"
+  },
+  {
+    "name": "Pantone 186 C",
+    "code": "186 C",
+    "r": 200,
+    "g": 16,
+    "b": 46,
+    "hex": "#c8102e",
+    "category": "red"
+  },
+  {
+    "name": "Pantone 287 C",
+    "code": "287 C",
+    "r": 0,
+    "g": 45,
+    "b": 114,
+    "hex": "#002d72",
+    "category": "blue"
+  },
+  {
+    "name": "Pantone 300 C",
+    "code": "300 C",
+    "r": 0,
+    "g": 172,
+    "b": 237,
+    "hex": "#00aced",
+    "category": "blue"
+  },
+  {
+    "name": "Pantone 301 C",
+    "code": "301 C",
+    "r": 0,
+    "g": 131,
+    "b": 196,
+    "hex": "#0083c4",
+    "category": "blue"
+  },
+  {
+    "name": "Pantone 485 C",
+    "code": "485 C",
+    "r": 218,
+    "g": 41,
+    "b": 28,
+    "hex": "#da291c",
+    "category": "red"
+  },
+  {
+    "name": "Pantone 550 C",
+    "code": "550 C",
+    "r": 75,
+    "g": 57,
+    "b": 129,
+    "hex": "#4b3981",
+    "category": "purple"
+  },
+  {
+    "name": "Pantone 803 C",
+    "code": "803 C",
+    "r": 0,
+    "g": 180,
+    "b": 216,
+    "hex": "#00b4d8",
+    "category": "cyan"
+  },
+  {
+    "name": "Pantone 871 C",
+    "code": "871 C",
+    "r": 134,
+    "g": 119,
+    "b": 95,
+    "hex": "#86775f",
+    "category": "brown"
+  },
+  {
+    "name": "Pantone 872 C",
+    "code": "872 C",
+    "r": 153,
+    "g": 134,
+    "b": 117,
+    "hex": "#998675",
+    "category": "brown"
+  }
+]
