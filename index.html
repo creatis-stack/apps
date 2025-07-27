@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matched - Color Finder</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #f9fafb;
+            line-height: 1.5;
+        }
+        
+        .container {
+            min-height: 100vh;
+            padding: 1.5rem;
+        }
+        
+        .max-w-4xl {
+            max-width: 56rem;
+            margin: 0 auto;
+        }
+        
+        .max-w-2xl {
+            max-width: 28rem;
+            margin: 0 auto;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+        
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+        
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .mt-4 {
+            margin-top: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.25rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            color: #6b7280;
+            font-style: italic;
+        }
+        
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .grid {
+            display: grid;
+        }
+        
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .gap-8 {
+            gap: 2rem;
+        }
+        
+        .gap-6 {
+            gap: 1.5rem;
+        }
+        
+        .gap-4 {
+            gap: 1rem;
+        }
+        
+        .gap-2 {
+            gap: 0.5rem;
+        }
+        
+        .space-y-6 > * + * {
+            margin-top: 1.5rem;
+        }
+        
+        .space-y-4 > * + * {
+            margin-top: 1rem;
+        }
+        
+        .space-y-3 > * + * {
+            margin-top: 0.75rem;
+        }
+        
+        .space-y-2 > * + * {
+            margin-top: 0.5rem;
+        }
+        
+        .flex {
+            display: flex;
+        }
+        
+        .items-center {
+            align-items: center;
+        }
+        
+        .justify-center {
+            justify-content: center;
+        }
+        
+        .justify-between {
+            justify-content: space-between;
+        }
+        
+        .input-container {
+            position: relative;
+            flex: 1;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 0.75rem;
+            color: #9ca3af;
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        
+        .input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 2.5rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary {
+            background-color: #3b82f6;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2563eb;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: #6b7280;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+        
+        .color-display {
+            width: 100%;
+            height: 16rem;
+            border-radius: 0.5rem;
+            border: 4px solid white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .color-swatch {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 0.5rem;
+            border: 2px solid #e5e7eb;
+        }
+        
+        .color-wheel {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 0.5rem;
+            border: 2px solid #d1d5db;
+            cursor: pointer;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-color: transparent;
+        }
+        
+        .color-wheel::-webkit-color-swatch {
+            border-radius: 0.5rem;
+            border: none;
+        }
+        
+        .color-wheel::-moz-color-swatch {
+            border-radius: 0.5rem;
+            border: none;
+        }
+        
+        .font-mono {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+        
+        .font-medium {
+            font-weight: 500;
+        }
+        
+        .font-semibold {
+            font-weight: 600;
+        }
+        
+        .text-sm {
+            font-size: 0.875rem;
+        }
+        
+        .text-gray-600 {
+            color: #6b7280;
+        }
+        
+        .text-gray-900 {
+            color: #111827;
+        }
+        
+        .text-blue-600 {
+            color: #2563eb;
+        }
+        
+        .text-blue-800 {
+            color: #1e40af;
+        }
+        
+        .bg-blue-50 {
+            background-color: #eff6ff;
+        }
+        
+        .text-blue-800 {
+            color: #1e40af;
+        }
+        
+        .bg-gray-50 {
+            background-color: #f9fafb;
+        }
+        
+        .hidden {
+            display: none !important;
+        }
+        
+        .message-box {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background-color: #eff6ff;
+            color: #1e40af;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .icon {
+            width: 1rem;
+            height: 1rem;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+        
+        .icon-lg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        
+        .copy-btn {
+            padding: 0.25rem;
+            border: none;
+            background: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            color: #6b7280;
+        }
+        
+        .copy-btn:hover {
+            background-color: #f3f4f6;
+        }
+        
+        .link-btn {
+            font-size: 0.875rem;
+            color: #2563eb;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-top: 0.25rem;
+        }
+        
+        .link-btn:hover {
+            color: #1e40af;
+        }
+        
+        .color-wheel-container {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: #f9fafb;
+            border-radius: 0.5rem;
+        }
+        
+        .color-wheel-container.show {
+            display: flex;
+        }
+
+        .distance-info {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin-top: 0.25rem;
+        }
+        
+        @media (max-width: 768px) {
+            .grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.875rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="max-w-4xl">
+            <div class="text-center mb-8">
+                <h1>Matched</h1>
+                <p class="tagline">Find your shade. Match it to professional color systems.</p>
+            </div>
+
+            <!-- Prompt Box -->
+            <div class="mb-8 card max-w-2xl">
+                <div class="space-y-4">
+                    <div class="flex gap-2">
+                        <div class="input-container">
+                            <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                            <input
+                                type="text"
+                                id="colorInput"
+                                placeholder="blue, Pantone 286, #FF5733, darker, warmer..."
+                                class="input"
+                            />
+                        </div>
+                        <button onclick="applyCommand()" class="btn btn-primary">
+                            Apply
+                        </button>
+                    </div>
+
+                    <!-- Color Wheel Toggle -->
+                    <div class="flex justify-center">
+                        <button onclick="toggleColorWheel()" class="btn btn-secondary">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <circle cx="12" cy="12" r="6"></circle>
+                                <circle cx="12" cy="12" r="2"></circle>
+                            </svg>
+                            <span id="wheelToggleText">Show</span> Color Wheel
+                        </button>
+                    </div>
+
+                    <!-- Color Wheel -->
+                    <div id="colorWheelContainer" class="color-wheel-container">
+                        <input
+                            type="color"
+                            id="colorWheel"
+                            onchange="handleColorWheelChange()"
+                            class="color-wheel"
+                        />
+                        <div class="text-sm text-gray-600">
+                            Click to pick a color visually
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="messageBox" class="message-box hidden"></div>
+
+                <div class="flex justify-between items-center mt-4">
+                    <button onclick="resetColor()" class="btn btn-secondary">
+                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
+                        </svg>
+                        Reset
+                    </button>
+                    
+                    <div class="text-sm text-gray-600">
+                        Try: <span class="font-medium">blue, Pantone 286, #FF5733, darker, warmer</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-8">
+                <!-- Color Display -->
+                <div class="space-y-6">
+                    <div 
+                        id="colorDisplay"
+                        class="color-display"
+                        style="background-color: rgb(0, 100, 200);"
+                    ></div>
+                    
+                    <div class="card">
+                        <h3 class="font-semibold text-gray-900 mb-4">Current Color</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">RGB:</span>
+                                <div class="flex items-center gap-2">
+                                    <span id="rgbValue" class="font-mono">0, 100, 200</span>
+                                    <button onclick="copyToClipboard('rgb')" class="copy-btn" title="Copy RGB">
+                                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">HEX:</span>
+                                <div class="flex items-center gap-2">
+                                    <span id="hexValue" class="font-mono">#0064c8</span>
+                                    <button onclick="copyToClipboard('hex')" class="copy-btn" title="Copy HEX">
+                                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                            <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"></path>
+                            </svg>
+                            Closest Pantone Match
+                        </h3>
+                        <div class="flex items-center gap-4">
+                            <div 
+                                id="pantoneColor"
+                                class="color-swatch"
+                                style="background-color: rgb(0, 85, 184);"
+                            ></div>
+                            <div>
+                                <div id="pantoneName" class="font-medium text-gray-900">Pantone 286 C</div>
+                                <div id="pantoneRgb" class="text-sm text-gray-600">RGB: 0, 85, 184</div>
+                                <div id="pantoneDistance" class="distance-info">Distance: 0</div>
+                                <button onclick="copyToClipboard('pantone')" class="link-btn">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                    Copy Pantone
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                            <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547L1.414 18.586a2 2 0 00-.586 1.414V22a2 2 0 002 2h18a2 2 0 002-2v-1.999a2 2 0 00-.586-1.414l-2.83-2.829z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2v5l3 3-3 3v5"></path>
+                            </svg>
+                            Closest DMC Thread Match
+                        </h3>
+                        <div class="flex items-center gap-4">
+                            <div 
+                                id="dmcColor"
+                                class="color-swatch"
+                                style="background-color: rgb(0, 0, 255);"
+                            ></div>
+                            <div>
+                                <div id="dmcName" class="font-medium text-gray-900">DMC 825 - Dark Blue</div>
+                                <div id="dmcDetails" class="text-sm text-gray-600">Code: 825 | RGB: 53, 87, 160</div>
+                                <div id="dmcDistance" class="distance-info">Distance: 0</div>
+                                <button onclick="copyToClipboard('dmc')" class="link-btn">
+                                    <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                    </svg>
+                                    Copy Thread Info
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <div class="space-y-6">
+                    <div class="card">
+                        <h3 class="font-semibold text-gray-900 mb-4">Commands</h3>
+                        <div class="space-y-2 text-sm">
+                            <div><strong>Colors:</strong> blue, red, green, yellow, purple, orange, pink, etc.</div>
+                            <div><strong>Pantone:</strong> 286, 186 C, Pantone 355, Reflex Blue</div>
+                            <div><strong>Hex codes:</strong> #FF5733, #0066CC</div>
+                            <div><strong>Adjustments:</strong> darker, lighter, warmer, cooler</div>
+                            <div><strong>Saturation:</strong> more saturated, less saturated</div>
+                            <div><strong>Traditional:</strong> tint (lighter), shade (darker)</div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3 class="font-semibold text-gray-900 mb-4">Database Info</h3>
+                        <div class="space-y-2 text-sm text-gray-600">
+                            <div><strong>Pantone C Colors:</strong> 400+ colors</div>
+                            <div><strong>DMC Thread Colors:</strong> 450+ colors</div>
+                            <div><strong>Matching:</strong> RGB distance algorithm</div>
+                            <div><strong>Accuracy:</strong> Professional color matching</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Color databases and state
+        let currentColor = { r: 0, g: 100, b: 200 };
+        let colorHistory = [];
+        let showWheel = false;
+
+        const baseColors = {
+            red: { r: 255, g: 0, b: 0 },
+            blue: { r: 0, g: 100, b: 200 },
+            green: { r: 0, g: 128, b: 0 },
+            yellow: { r: 255, g: 255, b: 0 },
+            purple: { r: 128, g: 0, b: 128 },
+            orange: { r: 255, g: 165, b: 0 },
+            pink: { r: 255, g: 192, b: 203 },
+            brown: { r: 139, g: 69, b: 19 },
+            gray: { r: 128, g: 128, b: 128 },
+            black: { r: 0, g: 0, b: 0 },
+            white: { r: 255, g: 255, b: 255 },
+            cyan: { r: 0, g: 255, b: 255 },
+            magenta: { r: 255, g: 0, b: 255 },
+            lime: { r: 0, g: 255, b: 0 },
+            navy: { r: 0, g: 0, b: 128 },
+            teal: { r: 0, g: 128, b: 128 },
+            maroon: { r: 128, g: 0, b: 0 },
+            olive: { r: 128, g: 128, b: 0 },
+            silver: { r: 192, g: 192, b: 192 }
+        };
+
+        // Comprehensive Pantone C color database
+        const pantoneColors = [
+            { name: 'Yellow C', r: 254, g: 221, b: 0 },
+            { name: 'Yellow 012 C', r: 255, g: 215, b: 0 },
+            { name: 'Orange 021 C', r: 254, g: 80, b: 0 },
+            { name: 'Warm Red C', r: 249, g: 66, b: 58 },
+            { name: 'Red 032 C', r: 239, g: 51, b: 64 },
+            { name: 'Rubine Red C', r: 206, g: 0, b: 88 },
+            { name: 'Rhodamine Red C', r: 225, g: 0, b: 152 },
+            { name: 'Purple C', r: 187, g: 41, b: 187 },
+            { name: 'Violet C', r: 68, g: 0, b: 153 },
+            { name: 'Blue 072 C', r: 16, g: 6, b: 159 },
+            { name: 'Reflex Blue C', r: 0, g: 20, b: 137 },
+            { name: 'Process Blue C', r: 0, g: 133, b: 202 },
+            { name: 'Green C', r: 0, g: 171, b: 132 },
+            { name: 'Black C', r: 45, g: 41, b: 38 },
+            { name: '100 C', r: 246, g: 235, b: 97 },
+            { name: '101 C', r: 247, g: 234, b: 72 },
+            { name: '102 C', r: 252, g: 227, b: 0 },
+            { name: '103 C', r: 197, g: 169, b: 0 },
+            { name: '104 C', r: 175, g: 152, b: 0 },
+            { name: '105 C', r: 137, g: 122, b: 39 },
+            { name: '106 C', r: 249, g: 229, b: 71 },
+            { name: '107 C', r: 251, g: 225, b: 34 },
+            { name: '108 C', r: 254, g: 219, b: 0 },
+            { name: '109 C', r: 255, g: 209, b: 0 },
+            { name: '110 C', r: 218, g: 170, b: 0 },
+            { name: '111 C', r: 170, g: 138, b: 0 },
+            { name: '112 C', r: 156, g: 132, b: 18 },
+            { name: '113 C', r: 250, g: 224, b: 83 },
+            { name: '114 C', r: 251, g: 221, b: 64 },
+            { name: '115 C', r: 253, g: 218, b: 36 },
+            { name: '116 C', r: 255, g: 205, b: 0 },
+            { name: '117 C', r: 201, g: 151, b: 0 },
+            { name: '118 C', r: 172, g: 132, b: 0 },
+            { name: '119 C', r: 137, g: 115, b: 34 },
+            { name: '120 C', r: 251, g: 219, b: 101 },
+            { name: '121 C', r: 253, g: 215, b: 87 },
+            { name: '122 C', r: 254, g: 209, b: 65 },
+            { name: '123 C', r: 255, g: 199, b: 44 },
+            { name: '124 C', r: 234, g: 170, b: 0 },
+            { name: '125 C', r: 181, g: 133, b: 0 },
+            { name: '126 C', r: 154, g: 118, b: 17 },
+            { name: '127 C', r: 243, g: 221, b: 109 },
+            { name: '128 C', r: 243, g: 213, b: 78 },
+            { name: '129 C', r: 243, g: 208, b: 62 },
+            { name: '130 C', r: 242, g: 169, b: 0 },
+            { name: '131 C', r: 204, g: 138, b: 0 },
+            { name: '132 C', r: 160, g: 116, b: 0 },
+            { name: '133 C', r: 108, g: 87, b: 27 },
+            { name: '134 C', r: 253, g: 210, b: 110 },
+            { name: '135 C', r: 255, g: 198, b: 88 },
+            { name: '136 C', r: 255, g: 191, b: 63 },
+            { name: '137 C', r: 255, g: 163, b: 0 },
+            { name: '138 C', r: 222, g: 124, b: 0 },
+            { name: '139 C', r: 175, g: 109, b: 4 },
+            { name: '140 C', r: 116, g: 83, b: 28 },
+            { name: '141 C', r: 242, g: 199, b: 92 },
+            { name: '142 C', r: 241, g: 190, b: 72 },
+            { name: '143 C', r: 241, g: 180, b
